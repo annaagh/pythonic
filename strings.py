@@ -1,97 +1,101 @@
-# string.py - Practice Python String Operations
+# string_operations.py - Practice Python String Operations with a Class
 
-# 1. Basic String Operations
-def basic_operations():
-    my_string = "Hello, Python!"
-    print("Original String:", my_string)
+class StringOperations:
+    def __init__(self, my_string):
+        self.my_string = my_string
 
-    # Length of the string
-    print("Length of the string:", len(my_string))
+    # 1. Basic String Operations
+    def basic_operations(self):
+        print("Original String:", self.my_string)
 
-    # Accessing characters and slicing
-    print("First character:", my_string[0])
-    print("Last character:", my_string[-1])
-    print("Slicing (0:5):", my_string[0:5])
+        # Length of the string
+        print("Length of the string:", len(self.my_string))
 
-    # String concatenation
-    print("Concatenation:", my_string + " Let's learn strings.")
+        # Accessing characters and slicing
+        print("First character:", self.my_string[0])
+        print("Last character:", self.my_string[-1])
+        print("Slicing (0:5):", self.my_string[0:5])
 
-    # String repetition
-    print("Repetition:", my_string * 3)
+        # String concatenation
+        print("Concatenation:", self.my_string + " Let's learn strings.")
 
+        # String repetition
+        print("Repetition:", self.my_string * 3)
 
-# 2. String Methods
-def string_methods():
-    my_string = " Hello, Python! "
+    # 2. String Methods
+    def string_methods(self):
+        print("Stripped string:", self.my_string.strip())
 
-    # Stripping whitespace
-    print("Stripped string:", my_string.strip())
+        # Converting to uppercase and lowercase
+        print("Uppercase:", self.my_string.upper())
+        print("Lowercase:", self.my_string.lower())
 
-    # Converting to uppercase and lowercase
-    print("Uppercase:", my_string.upper())
-    print("Lowercase:", my_string.lower())
+        # Checking start and end of the string
+        print("Starts with 'Hello':", self.my_string.startswith("Hello"))
+        print("Ends with '!':", self.my_string.endswith("!"))
 
-    # Checking start and end of the string
-    print("Starts with 'Hello':", my_string.startswith("Hello"))
-    print("Ends with '!':", my_string.endswith("!"))
+        # Finding and counting substrings
+        print("Find 'Python':", self.my_string.find("Python"))
+        print("Count 'o':", self.my_string.count("o"))
 
-    # Finding and counting substrings
-    print("Find 'Python':", my_string.find("Python"))
-    print("Count 'o':", my_string.count("o"))
+        # Replace substring
+        print("Replace 'Python' with 'World':", self.my_string.replace("Python", "World"))
 
-    # Replace substring
-    print("Replace 'Python' with 'World':", my_string.replace("Python", "World"))
+    # 3. String Formatting
+    @staticmethod
+    def string_formatting(name, age):
+        # Using f-strings (Python 3.6+)
+        print(f"My name is {name} and I am {age} years old.")
 
+        # Using str.format()
+        print("My name is {} and I am {} years old.".format(name, age))
 
-# 3. String Formatting
-def string_formatting():
-    name = "Alice"
-    age = 30
+        # Padding and aligning strings
+        print(f"|{name:<10}|{name:>10}|{name:^10}|")
 
-    # Using f-strings (Python 3.6+)
-    print(f"My name is {name} and I am {age} years old.")
+    # 4. String Splitting and Joining
+    def string_split_join(self, separator=","):
+        # Splitting
+        fruits = self.my_string.split(separator)
+        print("Split:", fruits)
 
-    # Using str.format()
-    print("My name is {} and I am {} years old.".format(name, age))
+        # Joining
+        joined_string = "-".join(fruits)
+        print("Joined:", joined_string)
 
-    # Padding and aligning strings
-    print(f"|{name:<10}|{name:>10}|{name:^10}|")
+    # 5. String Validation
+    def string_validation(self):
+        # Checking if the string is alphanumeric
+        print("Is alphanumeric:", self.my_string.isalnum())
 
+        # Checking if the string is alphabetic
+        print("Is alphabetic:", self.my_string.isalpha())
 
-# 4. String Splitting and Joining
-def string_split_join():
-    my_string = "apple,banana,cherry"
+        # Checking if the string is a digit
+        print("Is digit:", self.my_string.isdigit())
 
-    # Splitting
-    fruits = my_string.split(",")
-    print("Split:", fruits)
-
-    # Joining
-    joined_string = "-".join(fruits)
-    print("Joined:", joined_string)
-
-
-# 5. String Validation
-def string_validation():
-    my_string = "Python123"
-
-    # Checking if the string is alphanumeric
-    print("Is alphanumeric:", my_string.isalnum())
-
-    # Checking if the string is alphabetic
-    print("Is alphabetic:", my_string.isalpha())
-
-    # Checking if the string is a digit
-    print("Is digit:", my_string.isdigit())
-
-    # Checking if the string is lowercase or uppercase
-    print("Is lowercase:", my_string.islower())
-    print("Is uppercase:", my_string.isupper())
+        # Checking if the string is lowercase or uppercase
+        print("Is lowercase:", self.my_string.islower())
+        print("Is uppercase:", self.my_string.isupper())
 
 
+# Example usage
 if __name__ == "__main__":
-    basic_operations()
-    string_methods()
-    string_formatting()
-    string_split_join()
-    string_validation()
+    # Create an instance of StringOperations
+    my_string = " Hello, Python! "
+    string_ops = StringOperations(my_string)
+
+    # Perform basic operations
+    string_ops.basic_operations()
+
+    # Perform string methods
+    string_ops.string_methods()
+
+    # Perform string formatting (static method)
+    StringOperations.string_formatting("Alice", 30)
+
+    # Perform splitting and joining
+    string_ops.string_split_join()
+
+    # Perform string validation
+    string_ops.string_validation()
